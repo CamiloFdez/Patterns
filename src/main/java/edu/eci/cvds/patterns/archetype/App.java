@@ -1,10 +1,15 @@
 package edu.eci.cvds.patterns.archetype;
 
 /**
- * Hello world!
+ * Hello!
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        if (args.length <= 0) {
+			System.out.println("Hello Stranger.");
+        }
+        else{
+            System.out.println("Hello" + " " + args[0] + " " + args[1]);
+        }
     }
 }
