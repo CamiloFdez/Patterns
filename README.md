@@ -69,11 +69,11 @@
    - Al ejecutar este comando se vera la siguiente salida:
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Helloworld.png)
      - Una vez visto esto al tratar de ejecutar el comando con nuevos argumentos nos lanzara un error como se vera a continuacion:
-    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Helloerror.PNG)
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Helloerror.png)
    - Para solucionar este problema debemos configurar el codigo con argumentos para que no nos genere este error, se buscara una manera para leer argumentos y que cambie el saludo por el nombre que se le pase como argumento reestructurando el codigo como se vera en la siguiente foto:
-    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Appcodigo.PNG)
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Appcodigo.png)
    - Una vez cambiado el codigo al ejecutar con argumentos tanto con 1 o 2 se vera de la siguiente manera:
-    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilo.PNG)
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilo.png)
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilof.png)
 
 
