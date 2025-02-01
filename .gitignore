@@ -2,7 +2,7 @@
 idea/
 *.iml
 
-# Maven
+# Maveng
 target/
 .mvn/
 pom.xml.tag
