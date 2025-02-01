@@ -74,6 +74,12 @@
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Appcodigo.png)
    - Una vez cambiado el codigo al ejecutar con argumentos tanto con 1 o 2 se vera de la siguiente manera:
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilo.png)
-    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilof.png)
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilof.jpg)
+
+# Hacer el esqueleto de la aplicacion
+   - Cree el paquete edu.eci.cvds.patterns.shapes y el paquete edu.eci.cvds.patterns.shapes.concrete. 
+   - Para crear los paquetes se debe ejecutar el siguiente comando se creara los directorios y ademas se crearan los archivos java necesarios:
+
+
 
 
