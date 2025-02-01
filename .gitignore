@@ -1,5 +1,5 @@
 # IntelliJ IDEA
-.idea/
+idea/
 *.iml
 
 # Maven
@@ -21,3 +21,5 @@ release.properties
 *.jar
 *.war
 *.ear
+/.idea/
+/target/
