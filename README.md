@@ -76,4 +76,6 @@
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilo.png)
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilof.png)
 
+# Creando el Esqueleto de la aplicacion 
 
++para crear el esqueleto de la aplicacion creamos los directorios y las clases a usar
