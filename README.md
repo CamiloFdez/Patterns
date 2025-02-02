@@ -264,7 +264,7 @@
 
       Puedes incluir varios nombres de archivos en git check-ignore si quieres; no es necesario que los nombres se correspondan con los archivos que haya en tu repositorio.
 
-                              ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/gitignore.jpg)
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/gitignore.jpg)
 
 # Bibliografia:
 
