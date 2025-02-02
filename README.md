@@ -77,11 +77,70 @@
     ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hellocamilof.jpg)
 
 # Hacer el esqueleto de la aplicacion
-   - Cree el paquete edu.eci.cvds.patterns.shapes y el paquete edu.eci.cvds.patterns.shapes.concrete. 
-   - Para crear los paquetes se debe ejecutar el siguiente comando se creara los directorios y ademas se crearan los archivos java necesarios:
+* Cree el paquete edu.eci.cvds.patterns.shapes y el paquete edu.eci.cvds.patterns.shapes.concrete. 
+   - Para crear los paquetes se debe crear las carpetas y por consiguiente se crearan los directorios y ademas se crearan los archivos java necesarios:
+    ```bash
+        mkdir -p src/main/java/edu/eci/cvds/patterns/shapes
+        mkdir -p src/main/java/edu/eci/cvds/patterns/shapes/concrete
+    ```
+  Y se deberia ver de la siguiente manera:
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Treeshapes.png)
+  - Una vez creados los directorios se creara una interfaz llamada shapes que se vera de la siguiente manera:
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/Shape.java
+     ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Shapes.png)
+  - Despues de crear la clase Shapes con java y cumplir con esos parametros se buscara crear una enumeracion llamada RegularShapeType que se vera de la siguiente manera:
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/RegularShapeType.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Regularshapes.png)
+  Esto nos dara los parametros para crear las clases que nos indican en el codigo lo cual son las figuras geometricas que se quieren crear.
+  - A continuación se crearan las clases concretas de las figuras geometricas que se veran de la siguiente manera:
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/concrete/Hexagon.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Hexagon.png)
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/concrete/Quadrilateral.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Quadrilateral.png)
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/concrete/Triangle.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Triangle.png)
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/concrete/Pentagon.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Pentagon.png)
 
-
-
-# Creando el Esqueleto de la aplicacion 
-
-+para crear el esqueleto de la aplicacion creamos los directorios y las clases a usar
+  - Ahora crearemos el Main con el cual interactuaremos en la consola para ejecutar el nombre de las figuras y que nuestro proyecto maven nos de el resultado deseado:
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/archetype/ShapeMain.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/ShapeMain.png)
+  - Ya por ultimo se creara ShapesFactory con el cual con el se crearan las figuras geometricas y con el caso case-switch servira como un menu para seleccionar la figura que se quiere crear:
+    ```bash
+        touch src/main/java/edu/eci/cvds/patterns/shapes/ShapeFactory.java
+    ```
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/ShapeFactory.png)
+  * ¿Cuál fábrica se hizo?
+    - Se realizo SimpleFactory para la creacion de ShapeFactory debido a que esta utiliza un metodo estatico, el cual no necesita instanciar la clase para poder utilizarlo y ademas es mas sencillo de utilizar y entender. Este metodo estatico tambien decidira que instancia de la clase se creara y se retornara y se centra en la creacion de objetos de una jerarquia de clases.
+  * ¿Cuál es mejor?
+    - La mejor fabrica es la AbstractFactory debido a que esta se encarga de crear familias de objetos relacionados o dependientes y ademas se puede cambiar la familia de objetos que se crea en tiempo de ejecucion. Esta fabrica es mas compleja que las demas fabricas y se utiliza cuando se necesita crear objetos de una familia de clases y se necesita que estos objetos sean independientes de la creacion de los objetos.
+    - La FactoryMethod es una fabrica que se utiliza cuando se necesita crear un objeto de una jerarquia de clases y se necesita que el objeto sea independiente de la creacion de los objetos y ademas se necesita que la creacion de los objetos sea delegada a las subclases.
+  - Una vez hecho el proyecto se ejecutara varias veces para ver la funcionalidad del codigo hecho:
+    1. Sin parámetros:
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/NoParametros.png)
+    2. Parámetro: qwerty
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/Qwerty.png)
+    3. Parámetro: pentagon
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/PentagonMain.png)
+    4. Parámetro: Hexagon
+    ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/HexagonMain.png)
+  * ¿Cuál(es) de las anteriores instrucciones se ejecutan y funcionan correctamente y por qué?
+    1. Esta instruccion como se puede ver se ejecuta pero no funciona debido a que se debe recibir un parametro para que pueda funcionar correctamente.
+    2. Esta instruccion a pesar tambien se ejecuta no funciona debido a que el parametro que se le pasa no es una figura geometrica.
+    3. Esta instruccion como se puede ver tiene 2 alternativas, una en donde no se ingresa el caracter inicial en mayuscula y suelta un error diciendo que no es una figura geometrica o que no la reconoce debido a que en la sintaxis esta en mayuscula, y la otra alternativa es que si se ingresa el caracter inicial en mayuscula y se ejecuta correctamente.
+    4. Esta instruccion como se puede ver se ejecuta y funciona correctamente debido a que el parametro que se le pasa es una figura geometrica y ademas esta en mayuscula.
+# NOTA: Investigue para qué sirve "gitignore" 
