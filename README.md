@@ -143,4 +143,131 @@
     2. Esta instruccion a pesar tambien se ejecuta no funciona debido a que el parametro que se le pasa no es una figura geometrica.
     3. Esta instruccion como se puede ver tiene 2 alternativas, una en donde no se ingresa el caracter inicial en mayuscula y suelta un error diciendo que no es una figura geometrica o que no la reconoce debido a que en la sintaxis esta en mayuscula, y la otra alternativa es que si se ingresa el caracter inicial en mayuscula y se ejecuta correctamente.
     4. Esta instruccion como se puede ver se ejecuta y funciona correctamente debido a que el parametro que se le pasa es una figura geometrica y ademas esta en mayuscula.
-# NOTA: Investigue para qué sirve "gitignore" 
+# Investigue para qué sirve "gitignore" 
+  * Git Ignore
+
+    Git ve cada archivo de tu copia de trabajo de una de las siguientes maneras:
+
+      1. Con seguimiento: Un archivo que se ha preparado o confirmado previamente.
+
+      2. Sin seguimiento: Un archivo que no se ha preparado o confirmado.
+
+      3. Ignorado: Un archivo que se le ha indicado explícitamente a Git que ignore.
+
+    Los archivos ignorados suelen ser artefactos de compilación y archivos generados por el equipo que pueden derivarse de
+    tu fuente de repositorios o que no deberían confirmarse por algún otro motivo. Estos son algunos ejemplos habituales:
+
+      - Cachés de dependencias, como es el caso del contenido de /node_modules o /packages.
+      - Código compilado como, por ejemplo, los archivos .o, .pyc y .class.
+      - Directorios de salida de compilación, como es el caso de /bin, /out o /target.
+      - Archivos generados en tiempo de ejecución como, por ejemplo, .log, .lock o .tmp.
+      - Archivos ocultos del sistema, como es el caso de .DS_Store o Thumbs.db.
+      - Archivos personales de configuración de IDE como, por ejemplo, .idea/workspace.xml.
+
+    A los archivos ignorados se les hace un seguimiento en un archivo especial llamado .gitignore que se incorpora en la raíz de tu repositorio.
+    En Git no hay ningún comando explícito para ignorar archivos: en su lugar, cuando tengas nuevos archivos que quieras ignorar, deberás editar
+    y confirmar manualmente el archivo .gitignore. Los archivos .gitignore contienen patrones que establecen coincidencias con los nombres de
+    archivo de tu repositorio para determinar si deberían ignorarse o no.
+
+    Puedes utilizar # para incluir comentarios en tu archivo .gitignore:
+
+       ```bash
+        # ignore all logs
+        *.log 
+      ```
+        Puedes usar la barra oblicua invertida (\) para escapar los caracteres de un patrón de .gitignore si tienes archivos o directorios que los contengan:
+
+       ```bash
+        # ignore the file literally named foo[01].txt
+        foo\[01\].txt
+      ```
+    # Archivos .gitignore compartidos en tu repositorio
+
+    Las reglas de ignoración de Git suelen definirse en un archivo .gitignore ubicado en la raíz de tu repositorio. Sin embargo, puedes optar por definir varios archivos .gitignore en distintos directorios del repositorio. Cada patrón de un archivo .gitignore concreto se comprueba en relación con el directorio que contiene ese archivo. No obstante, lo habitual, y el enfoque más simple, es definir un solo archivo .gitignore en la raíz. Cuando el archivo .gitignore se incorpora, se le realiza un control de versiones como con cualquier otro archivo del repositorio y se comparte con tus compañeros de equipo al enviarlo. Por lo general, solo debes incluir patrones en los archivos .gitignore que beneficiarán a otros usuarios del repositorio.
+
+    # Reglas personales de git ignore
+
+    ambién puedes definir patrones personales de ignoración de Git para un repositorio concreto en un archivo especial en .git/info/exclude. Además de no aplicárseles el control de versiones, tampoco se distribuyen con tu repositorio, por lo que es un lugar adecuado para incluir patrones que probablemente solo te beneficien a ti. Por ejemplo, si tienes una configuración de inicio de sesión personalizada o herramientas especiales de desarrollo que generan archivos en el directorio de trabajo de tu repositorio, podrías plantearte la posibilidad de añadirlos a .git/info/exclude para evitar que se confirmen por accidente en el repositorio.
+
+    # Reglas globales de git ignore
+
+    Asimismo, puedes definir patrones globales de ignoración de Git para todos los repositorios de tu sistema local. Para ello, basta con establecer la propiedad core.excludesFile de Git. Tendrás que crear este archivo por ti mismo. Si no tienes claro dónde colocar el archivo .gitignore global, una buena opción es tu directorio principal (además, luego te resultará más sencillo encontrarlo). En cuanto hayas creado el archivo, deberás configurar su ubicación con git config:
+
+       ```bash
+      $ touch ~/.gitignore
+      $ git config --global core.excludesFile ~/.gitignore
+      ```
+
+    Debes tener cuidado con los patrones que eliges ignorar de manera global, ya que los distintos tipos de archivos son pertinentes para proyectos diferentes. Los archivos especiales del sistema operativo (como .DS_Store y thumbs.db) o los archivos temporales creados por algunas herramientas para desarrolladores son candidatos típicos para ignorarse globalmente.
+
+    # Omisión de un archivo previamente confirmado
+
+    Si quieres ignorar un archivo que has confirmado en el pasado, deberás eliminarlo de tu repositorio y, a continuación, añadirle una regla de .gitignore. Al usar la opción --cached con git rm, el archivo se eliminará del repositorio, pero permanecerá en tu directorio de trabajo como archivo ignorado.
+
+      ```bash
+        $ echo debug.log >> .gitignore
+    
+        $ git rm --cached debug.log
+        rm 'debug.log'
+        
+        $ git commit -m "Start ignoring debug.log"
+      ```
+
+      Puedes omitir la opción --cached si quieres eliminar el archivo tanto del repositorio como de tu sistema de archivos local.
+
+      # Confirmación de un archivo ignorado
+
+      Se puede forzar la confirmación de un archivo ignorado en el repositorio mediante la opción -f (o --force) con git add:
+
+      ```bash
+        $ cat .gitignore
+        *.log
+  
+        $ git add -f debug.log
+  
+        $ git commit -m "Force adding debug.log"
+    ```
+
+      Puedes plantearte hacer esto si tienes definido un patrón general (como *.log), pero quieres confirmar un archivo específico. Sin embargo, es mejor definir una excepción a la regla general:
+
+      ```bash
+        $ echo !debug.log >> .gitignore
+  
+        $ cat .gitignore
+        *.log
+        !debug.log
+        
+        $ git add debug.log
+        
+        $ git commit -m "Adding debug.log"
+    ```
+      Este enfoque es más obvio y menos confuso para tus compañeros de equipo.
+
+      # Almacenamiento de un archivo ignorado
+
+      El comando git stash es una potente función de Git para guardar temporalmente cambios locales y revertirlos, lo que te permite volver a aplicarlos más tarde. Como cabría esperar, de forma predeterminada, git stash ignora los archivos ignorados y solo almacena en stash los cambios de los archivos de los que Git hace un seguimiento. Sin embargo, puedes invocar git stash con la opción --all para guardar en el stash también los cambios de los archivos ignorados y sin seguimiento.
+
+      # Depuración de archivos .gitignore
+
+      Si tienes patrones de .gitignore complicados o patrones repartidos por varios archivos .gitignore, puede resultar difícil averiguar el motivo por el que se ignora un archivo concreto. Puedes usar el comando git check-ignore con la opción -v (o --verbose) para determinar qué patrón está provocando que se ignore un archivo en particular:
+
+      ```bash
+        $ git check-ignore -v debug.log
+        .gitignore:3:*.log  debug.log
+    ```
+
+      La salida muestra lo siguiente:
+
+      ```bash
+        <file containing the pattern> : <line number of the pattern> : <pattern>    <file name>
+    ```
+
+      Puedes incluir varios nombres de archivos en git check-ignore si quieres; no es necesario que los nombres se correspondan con los archivos que haya en tu repositorio.
+
+      ![imagen](https://github.com/CamiloFdez/Patterns/blob/master/assets/gitignore.png)
+
+# Bibliografia:
+
+    - https://git-scm.com/docs/gitignore
+    - https://docs.github.com/es/get-started/getting-started-with-git/ignoring-files
+    - https://www.atlassian.com/git/tutorials/saving-changes/gitignore
